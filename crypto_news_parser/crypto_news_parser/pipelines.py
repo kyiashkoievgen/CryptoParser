@@ -10,4 +10,13 @@ from itemadapter import ItemAdapter
 
 class CryptoNewsParserPipeline:
     def process_item(self, item, spider):
+
+        print(
+            '\n#####################\n',
+            item,
+            '\n######################\n',
+            spider,
+            '\n########################\n'
+        )
+
         return item
