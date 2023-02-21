@@ -9,6 +9,8 @@ import scrapy
 class CryptoNewsParserItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    title = scrapy.Field()
-    text = scrapy.Field()
-    date = scrapy.Field()
+    news_title = scrapy.Field()
+    news_text = scrapy.Field()
+    news_time = scrapy.Field()
+    _id = scrapy.Field()
+
