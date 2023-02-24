@@ -7,6 +7,8 @@
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
 from pymongo import MongoClient
+import re
+import datetime, time
 
 class CryptoNewsParserPipeline:
     def __init__(self):
@@ -17,5 +19,9 @@ class CryptoNewsParserPipeline:
         collection = self.mongo_db[spider.name]
         if collection.find_one({'news_title': item['news_title']}) is None:
             collection.insert_one(item)
+        # print('###############',
+        #       spider,
+        #       item,
+        #       '#############')
 
         return item
