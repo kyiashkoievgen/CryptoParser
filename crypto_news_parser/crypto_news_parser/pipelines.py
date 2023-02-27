@@ -16,9 +16,21 @@ class CryptoNewsParserPipeline:
         self.mongo_db = client.db_crypto_data
 
     def process_item(self, item, spider):
-        collection = self.mongo_db[spider.name]
-        if collection.find_one({'news_title': item['news_title']}) is None:
-            collection.insert_one(item)
+
+        if spider.name == 'binance_api':
+            if item['add_url'].find('depth') > 0:
+                collection = self.mongo_db['depth']
+                collection.insert_one(item)
+            elif item['add_url'].find('trades') > 0:
+                collection = self.mongo_db['rades']
+                collection.insert_one(item)
+            elif item['add_url'].find('klines') > 0:
+                collection = self.mongo_db['klines']
+                collection.insert_one(item)
+        else:
+            collection = self.mongo_db[spider.name]
+            if collection.find_one({'news_title': item['news_title']}) is None:
+                collection.insert_one(item)
         # print('###############',
         #       spider,
         #       item,
