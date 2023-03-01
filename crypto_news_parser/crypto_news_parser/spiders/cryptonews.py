@@ -10,7 +10,7 @@ from crypto_news_parser.items import CryptoNewsParserItem
 class CryptonewsSpider(scrapy.Spider):
     name = "cryptonews"
     allowed_domains = ["cryptonews.net"]
-    start_urls = ["https://cryptonews.net)"]
+    start_urls = ["https://cryptonews.net"]
 
     def parse(self, response: HtmlResponse):
         news_link = response.xpath('//a[@ class="title"]')
