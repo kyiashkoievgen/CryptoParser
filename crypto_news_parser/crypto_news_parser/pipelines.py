@@ -12,7 +12,7 @@ import datetime, time
 
 class CryptoNewsParserPipeline:
     def __init__(self):
-        client = MongoClient('localhost:27017')
+        client = MongoClient('127.0.0.1:27017')
         self.mongo_db = client.db_crypto_data
 
     def process_item(self, item, spider):
