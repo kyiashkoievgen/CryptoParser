@@ -23,7 +23,7 @@ class CryptoNewsParserPipeline:
                 collection = self.mongo_db['depth']
                 collection.insert_one(item)
             elif url.find('trades') > 0:
-                collection = self.mongo_db['rades']
+                collection = self.mongo_db['trades']
                 collection.insert_one(item)
             elif url.find('klines') > 0:
                 collection = self.mongo_db['klines']
