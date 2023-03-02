@@ -1,4 +1,0 @@
-Scrapy~=2.8.0
-pymongo~=4.3.3
-itemloaders~=1.0.6
-itemadapter~=0.7.0
