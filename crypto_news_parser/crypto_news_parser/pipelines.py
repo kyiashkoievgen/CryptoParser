@@ -17,6 +17,7 @@ class CryptoNewsParserPipeline:
 
     def process_item(self, item, spider):
         url = item.pop('add_url')
+        print('!!!!!!!!!!!!!!!!!!!', item, '!!!!!!!!!!!!!!!!!!!!!!')
         if spider.name == 'binance_api':
             if url.find('depth') > 0:
                 collection = self.mongo_db['depth']

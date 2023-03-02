@@ -19,6 +19,7 @@ class CryptoNewsParserItem(scrapy.Item):
 class BinanceApiParserItem(scrapy.Item):
     add_item = scrapy.Field()
     add_url = scrapy.Field()
+    add_time = scrapy.Field()
     _id = scrapy.Field()
 
 
