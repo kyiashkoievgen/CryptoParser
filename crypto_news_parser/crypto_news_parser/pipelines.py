@@ -16,8 +16,9 @@ class CryptoNewsParserPipeline:
         self.mongo_db = client.db_crypto_data
 
     def process_item(self, item, spider):
-        url = item.pop('add_url')
-        print('!!!!!!!!!!!!!!!!!!!', item, '!!!!!!!!!!!!!!!!!!!!!!')
+        url = ''
+        if item.get('add_url'):
+            url = item.pop('add_url')
         if spider.name == 'binance_api':
             if url.find('depth') > 0:
                 collection = self.mongo_db['depth']
