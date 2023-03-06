@@ -31,7 +31,9 @@ start_time = 0
 stop_time = int(datetime.datetime.now().timestamp())
 filename = 0
 if args.filename:
-    filename = args.filename
+    filename = args.filename[0]
+else:
+    filename = ''
 
 if args.begin:
     start_time = int(datetime.datetime.strptime(args.begin, data_format).timestamp())
@@ -39,27 +41,19 @@ if args.end:
     stop_time = int(datetime.datetime.strptime(args.end, data_format).timestamp())
 if args.news:
     df = db.get_news_by_time(start_time, stop_time)
-    if filename:
-        df.to_csv('~/news_'+filename[0]+'.csv')
-    else:
-        print(df)
+    df.to_csv(f'~/crypto_data/news_{args.begin}_{args.end}'+filename+'.csv')
+
 if args.trades:
     df = db.get_traders(start_time, stop_time)
-    if filename:
-        df.to_csv('~/trades_'+filename[0]+'.csv')
-    else:
-        print(df)
+    df.to_csv(f'~/crypto_data/trades_{args.begin}_{args.end}'+filename+'.csv')
+
 if args.depth:
     df = db.get_depth(start_time, stop_time)
-    if filename:
-        df.to_csv('~/depth_'+filename[0]+'.csv')
-    else:
-        print(df)
+    df.to_csv(f'~/crypto_data/depth_{args.begin}_{args.end}'+filename+'.csv')
+
 if args.klines or (not args.depth and not args.trades) and not args.news:
     df = db.get_klines(start_time, stop_time)
-    if filename:
-        df.to_csv('~/klines_'+filename[0]+'.csv')
-    else:
-        print(df)
+    df.to_csv(f'~/crypto_data/klines_{args.begin}_{args.end}'+filename+'.csv')
+
 
     print(df)
