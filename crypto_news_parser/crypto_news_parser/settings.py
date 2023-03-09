@@ -67,6 +67,7 @@ DOWNLOAD_DELAY = 1
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     "crypto_news_parser.pipelines.CryptoNewsParserPipeline": 300,
+    "crypto_news_parser.pipelines.CryptoNewsParserPipelineToFile": 200,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

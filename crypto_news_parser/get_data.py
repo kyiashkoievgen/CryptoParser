@@ -73,6 +73,7 @@ class DataFromDB:
         return pd.DataFrame(data)
 
     def get_depth(self, from_time, to_time):
+        print(from_time, to_time)
         cursor = self.depth_collection.find(
             {
                 'add_time.serverTime': {'$gt': from_time * 1000},
