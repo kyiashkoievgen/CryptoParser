@@ -67,7 +67,7 @@ class CryptoNewsParserPipelineToFile:
         url = ''
         if item.get('add_url'):
             url = item.pop('add_url')
-        if spider.name == 'binance_to_file':
+        if spider.name == 'binanct_to_file':
             if url.find('depth') > 0:
                 df_data = {'Depth_time': [item['add_time']['serverTime']]}
                 i = 0
@@ -91,9 +91,12 @@ class CryptoNewsParserPipelineToFile:
                     'time': [],
                     'isBuyerMaker': []
                 }
+
                 for each_trade in item['add_item']:
                     df_data['id'].append(each_trade['id'])
                     df_data['price'].append(each_trade['price'])
                     df_data['qty'].append(each_trade['qty'])
                     df_data['time'].append(each_trade['time'])
                     df_data['isBuyerMaker'].append(each_trade['isBuyerMaker'])
+
+                pd.DataFrame(df_data).to_csv('~/BTC_trade_hist.csv', mode='a', index=False, header=False)

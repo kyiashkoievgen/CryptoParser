@@ -26,3 +26,4 @@ class BinanceApiParserItem(scrapy.Item):
 class BinanceToFileParserItem(scrapy.Item):
     add_item = scrapy.Field()
     add_time = scrapy.Field()
+    add_url = scrapy.Field()

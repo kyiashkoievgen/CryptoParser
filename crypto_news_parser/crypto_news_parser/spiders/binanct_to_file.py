@@ -1,12 +1,12 @@
 import scrapy
 from scrapy.http import HtmlResponse
-from crypto_news_parser.item import BinanceToFileParserItem
+from crypto_news_parser.items import BinanceToFileParserItem
 
 import time
 
 
 class BinanceToFileSpider(scrapy.Spider):
-    name = "binance_to_file"
+    name = "binanct_to_file"
     allowed_domains = ["api.binance.com"]
     start_urls = ["https://api.binance.com/api/v3/time"]
     binance_time = 0
